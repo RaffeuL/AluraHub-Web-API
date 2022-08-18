@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, TouchableOpacity } from 'react-native';
-import estilos from './estilos';
+import { useIsFocused } from '@react-navigation/native';
+
 import { pegarRepositoriosDoUsuario } from '../../servicos/requisicoes/repositorios';
+
+import estilos from './estilos';
 
 export default function Repositorios({ route, navigation }) {
     const [repo, setRepo] = useState([]);
+    const estaNaTela = useIsFocused()
 
     useEffect( async () => {
         const resultado = await pegarRepositoriosDoUsuario(route.params.id);
         setRepo(resultado)
-    }, [])
+    }, [estaNaTela])
 
     return (
         <View style={estilos.container}>
