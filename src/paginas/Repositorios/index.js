@@ -17,7 +17,9 @@ export default function Repositorios({ route, navigation }) {
     }, [estaNaTela])
 
     async function buscaRepositorio() {
-        const resultado = await buscarRepositorio(nomeRepositorio)
+        const resultado = await buscarRepositorio(route.params.id, nomeRepositorio)
+        setRepo(resultado)
+        setNomeRepositorio('')
     }
 
     return (
