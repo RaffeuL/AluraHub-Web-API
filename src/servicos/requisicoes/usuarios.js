@@ -1,5 +1,4 @@
 import api from "../api";
-//Iniciar o Servidor: json-server --watch --host 192.168.0.2 db.json
 
 export async function buscaUsuario(nomeUsuario) {
     try {
