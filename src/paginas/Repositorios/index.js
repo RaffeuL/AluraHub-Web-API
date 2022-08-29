@@ -12,12 +12,12 @@ export default function Repositorios({ route, navigation }) {
     const estaNaTela = useIsFocused()
 
     useEffect( async () => {
-        const resultado = await pegarRepositoriosDoUsuario(route.params.id);
+        const resultado = await pegarRepositoriosDoUsuario(route.params.nomeUsuario);
         setRepo(resultado)
     }, [estaNaTela])
 
     async function buscaRepositorio() {
-        const resultado = await buscarRepositorio(route.params.id, nomeRepositorio)
+        const resultado = await buscarRepositorio(route.params.nomeUsuario, nomeRepositorio)
         setRepo(resultado)
         setNomeRepositorio('')
     }
@@ -27,7 +27,7 @@ export default function Repositorios({ route, navigation }) {
             <Text style={estilos.repositoriosTexto}>{repo.length} repositórios criados</Text>
             <TouchableOpacity 
                 style={estilos.botao}
-                onPress={() => navigation.navigate('CriarRepositorio', {id: route.params.id})}
+                onPress={() => navigation.navigate('CriarRepositorio', {id: route.params.nomeUsuario})}
             >
                 <Text style={estilos.textoBotao}>Adicionar novo repositório</Text>
             </TouchableOpacity>
@@ -56,7 +56,7 @@ export default function Repositorios({ route, navigation }) {
                 onPress={() => navigation.navigate('InfoRepositorio', {item})}
                 >
                     <Text style={estilos.repositorioNome}>{item.name}</Text>
-                    <Text style={estilos.repositorioData}>Atualizado em {item.data}</Text>
+                    <Text style={estilos.repositorioData}>Atualizado em {item.updated_at}</Text>
                 </TouchableOpacity>
             )}
             />

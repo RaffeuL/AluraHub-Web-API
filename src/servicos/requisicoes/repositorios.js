@@ -1,8 +1,8 @@
 import api from "../api";
 
-export async function pegarRepositoriosDoUsuario(id) {
+export async function pegarRepositoriosDoUsuario(nomeUsuario) {
     try {
-        const resultado = await api.get(`/repos?postId=${id}`);
+        const resultado = await api.get(`/users/${nomeUsuario}/repos`);
         return resultado.data;
     } catch (error) {
         console.log(error);
@@ -48,9 +48,9 @@ export async function deletarRepositoriosDoUsuario(id) {
     }
 }
 
-export async function buscarRepositorio(id, nome) {
+export async function buscarRepositorio(nomeUsuario, nome) {
     try{
-        const resultado = await api.get(`/posts/${id}/repos?name=${nome}`);
+        const resultado = await api.get(`/users/${nomeUsuario}/repos?name=${nome}`);
         return resultado.data
     }catch(error){
         console.log(error)

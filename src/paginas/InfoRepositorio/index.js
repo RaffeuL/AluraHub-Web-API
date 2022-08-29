@@ -6,7 +6,7 @@ import estilos from './estilos';
 
 export default function InfoRepositorio({ route, navigation }) {
     const [nome, setNome] = useState(route.params.item.name);
-    const [data, setData] = useState(route.params.item.data);
+    const [data, setData] = useState(route.params.item.updated_at);
 
     async function salvar() {
         const resultado = await salvarRepositoriosDoUsuario(
